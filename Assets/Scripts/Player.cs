@@ -8,12 +8,12 @@ public class Player : MonoBehaviour
     public int damage = 20;
     
     [SerializeField] private float Speed;
-    [SerializeField] private float MaxGold = 60f;
-    
+    public float MaxGold = 60f;                 
+
     private Rigidbody2D _rigidbody2D;
     private Camera _camera;
     
-    private float _curGold;
+    public float _curGold;                  
 
     void Start()
     {

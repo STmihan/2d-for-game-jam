@@ -6,20 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    public static bool isPause=false;
+    
     public GameObject pausePanel,gamePanel;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (isPause) Continue();
+            if (GameManager.Instance.isPause) Continue();
             else
             {
                 pausePanel.SetActive(true);
                 gamePanel.SetActive(false);
                 Time.timeScale = 0f;
-                isPause = true;
+                GameManager.Instance.isPause = true;
             }
            
         }
@@ -33,7 +33,7 @@ public class UI : MonoBehaviour
         pausePanel.SetActive(false);
         gamePanel.SetActive(true);
         Time.timeScale = 1f;
-        isPause = false;
+        GameManager.Instance.isPause = false;
     } 
     public void ExitGame()
     {       
