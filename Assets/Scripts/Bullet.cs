@@ -28,16 +28,17 @@ public class Bullet : MonoBehaviour
     {
         var gm = other.gameObject;
         var col = other.collider;
+        
         if (isEnemyBullet)
         {
-            if (other.collider.CompareTag($"Player"))
+            if (col.CompareTag($"Player"))
             {
                 gm.GetComponent<Player>().TakeDamage(_enemy.damage);
             }
         }
         else
         {
-            if (other.collider.CompareTag($"Enemy") && gm.GetComponent<Enemy>())
+            if (col.CompareTag($"Enemy") && gm.GetComponent<Enemy>())
             {
                 gm.GetComponent<Enemy>().TakeDamage(_player.damage);
             }
