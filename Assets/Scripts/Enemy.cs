@@ -5,27 +5,43 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    #region HP, damage and Speed fields
+    [Header("HP, damage and Speed fields")]
     public float damage = 2;
-
     [SerializeField] private int maxHP = 60;
     [SerializeField] private float speed = 2;
     
     [SerializeField] private float attackRange = 2;
     [SerializeField] private float attackDelay = 2;
-
-    [SerializeField] private GameObject bullet;
+    #endregion
     
-    [SerializeField] private bool isRange;
+    [Space]
+    [SerializeField] private GameObject bullet;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask pLayerMask;
+    
+    [SerializeField] private bool isRange;
 
+    #region HitEffect
+    [Header("HitEffect")]
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float duration;
+
+    [SerializeField]private SpriteRenderer _spriteRenderer;
+    [SerializeField]private Material _origMaterial;
+    
+    private Coroutine _flashCoroutine;
+    #endregion
+    #region Private fields
     private Transform _target;
     private Player _targetComponent;
     private Rigidbody2D _rigidbody2D;
 
     private float _nextAttackTime;
     private int _curHP;
+    #endregion
 
+    
     private void Start()
     {
         _target = GameObject.FindWithTag("Player").GetComponent<Transform>();
@@ -34,6 +50,7 @@ public class Enemy : MonoBehaviour
         _curHP = maxHP;
     }
 
+    #region Updates Methods
     private void FixedUpdate()
     {
         FollowTarget();
@@ -46,29 +63,14 @@ public class Enemy : MonoBehaviour
             Attack();
         }
     }
-
+    #endregion
+    #region Movement
     private void FollowTarget()
     {
         Rotate();
         if (Vector2.Distance(transform.position, _target.position) > attackRange)
         {
             Move();
-        }
-    }
-
-    private void Attack()
-    {
-        if (Time.time > _nextAttackTime)
-        {
-            if (!isRange)
-            {
-                MeeleAttack();
-            }
-            else
-            {
-                RangeAttack();
-            }
-            _nextAttackTime = Time.time + attackDelay;
         }
     }
 
@@ -84,7 +86,24 @@ public class Enemy : MonoBehaviour
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }
-
+    #endregion
+    #region Attack Methods
+    private void Attack()
+    {
+        if (Time.time > _nextAttackTime)
+        {
+            if (!isRange)
+            {
+                MeeleAttack();
+            }
+            else
+            {
+                RangeAttack();
+            }
+            _nextAttackTime = Time.time + attackDelay;
+        }
+    }
+    
     private void MeeleAttack()
     {
         Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, attackRange, pLayerMask);
@@ -97,14 +116,38 @@ public class Enemy : MonoBehaviour
     {
         Instantiate(bullet, attackPoint.position, attackPoint.rotation);
     }
+    #endregion
 
+    #region HitEffect
+    private void HitEffect()
+    {
+        if (_flashCoroutine != null) StopCoroutine(_flashCoroutine);
+        _flashCoroutine = StartCoroutine(FlashRoutine());
+    }
+    
+    private IEnumerator FlashRoutine()
+    {
+        _spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(duration);
+
+        _spriteRenderer.material = _origMaterial;
+
+        _flashCoroutine = null;
+    }
+
+    #endregion
+    
+    #region Public methods
     public void TakeDamage(int dm)
     {
         _curHP -= dm;
+        HitEffect();
         if (_curHP <= 0)
         {
             Destroy(gameObject);
             _targetComponent.HealOn();
         }
     }
+    #endregion
 }
