@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7386593302502063275}
   - component: {fileID: 5762885426707334223}
   m_Layer: 8
-  m_Name: Bullet
+  m_Name: Bullet_enemy
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,4 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  RangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
+  rangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
+  player: {fileID: 4641997274585063186, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
+  isEnemyBullet: 1
