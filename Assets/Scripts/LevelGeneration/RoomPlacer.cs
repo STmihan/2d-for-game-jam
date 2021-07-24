@@ -20,7 +20,7 @@ public class RoomPlacer : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)) SpawnRoom();
+        if(player.position.y > spawnedRooms[spawnedRooms.Count-1].Forward.position.y - 15) SpawnRoom();
     }
 
     private void SpawnRoom()
@@ -28,5 +28,11 @@ public class RoomPlacer : MonoBehaviour
         Room newRoom = Instantiate(rooms[Random.Range(0, rooms.Length)]);
         newRoom.transform.position = spawnedRooms[spawnedRooms.Count-1].Forward.position - newRoom.Back.localPosition;
         spawnedRooms.Add(newRoom);
+
+        if (spawnedRooms.Count > 3)
+        {
+            Destroy(spawnedRooms[0].gameObject);
+            spawnedRooms.RemoveAt(0);
+        }
     }
 }
