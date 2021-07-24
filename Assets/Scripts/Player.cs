@@ -8,12 +8,14 @@ public class Player : MonoBehaviour
     [SerializeField] private float Speed;
     private Rigidbody2D _rigidbody2D;
     private Camera _camera;
-    [SerializeField] private float Gold = 60f;
+    [SerializeField] private float MaxGold = 60f;
+    private float _curGold;
 
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _camera = Camera.main;
+        _curGold = MaxGold;
     }
     
     void FixedUpdate()
@@ -31,10 +33,11 @@ public class Player : MonoBehaviour
     void Move()
     {
         Vector2 move;
-        move.x = Input.GetAxis("Horizontal");
-        move.y = Input.GetAxis("Vertical");
+        move.x = Input.GetAxisRaw("Horizontal");
+        move.y = Input.GetAxisRaw("Vertical");
         
-        _rigidbody2D.AddForce(move * Speed);
+        // _rigidbody2D.AddForce(move * (Speed * Time.fixedDeltaTime));
+        _rigidbody2D.MovePosition(_rigidbody2D.position + move.normalized * (Speed * Time.fixedDeltaTime));
     }
 
     void Rotate()
@@ -48,6 +51,13 @@ public class Player : MonoBehaviour
 
     void GoldTimer()
     {
-        Gold -= Time.deltaTime;
+        _curGold -= Time.deltaTime;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _curGold -= damage;
+        if (_curGold <= 0) 
+            this.gameObject.SetActive(false);
     }
 }
