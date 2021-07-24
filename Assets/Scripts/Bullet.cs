@@ -5,46 +5,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private float bulletSpeed = 50f;
-    [SerializeField] private bool isEnemyBullet;
-    
-    [SerializeField] private GameObject rangeEnemy;
-    [SerializeField] private GameObject player;
-    
     private Rigidbody2D _rigidbody2D;
+    [SerializeField] private float bulletSpeed = 50f;
+    [SerializeField] private GameObject RangeEnemy;
     private Enemy _enemy;
-    private Player _player;
-    
+    private float _damage;
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddRelativeForce(Vector2.up * bulletSpeed, ForceMode2D.Impulse);
-        Destroy(gameObject, 1);
-        _enemy = rangeEnemy.GetComponent<Enemy>();
-        _player = player.GetComponent<Player>();
+        Destroy(gameObject, 2f);
+        _enemy = RangeEnemy.GetComponent<Enemy>();
+        _damage = _enemy.damage;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        var gm = other.gameObject;
-        var col = other.collider;
-        if (isEnemyBullet)
-        {
-            if (other.collider.CompareTag($"Player"))
-            {
-                gm.GetComponent<Player>().TakeDamage(_enemy.damage);
-            }
-        }
-        else
-        {
-            if (other.collider.CompareTag($"Enemy") && gm.GetComponent<Enemy>())
-            {
-                gm.GetComponent<Enemy>().TakeDamage(_player.damage);
-            }
-        }
-        if (!col.CompareTag($"Bullet"))
-        {
+        if(!other.collider.CompareTag($"Player") && !other.collider.CompareTag($"Bullet"))
             Destroy(gameObject);
+        if (other.collider.CompareTag($"Player") && !other.collider.CompareTag($"Bullet"))
+        {
+            other.gameObject.GetComponent<Player>().TakeDamage(_damage);
+                Destroy(gameObject);
         }
     }
 }

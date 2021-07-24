@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3436289205403537996}
   - component: {fileID: 3611640100535903734}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Test_Enemy_Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8048229805220218440}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -124,9 +124,9 @@ GameObject:
   - component: {fileID: 5745037347939033431}
   - component: {fileID: 8283136196729741549}
   - component: {fileID: 3796418638466994680}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Enemy_range
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -196,12 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0af74c249fd8944b79c14842b5f645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  maxHP: 60
   speed: 2
+  damage: 20
   attackRange: 5
   attackDelay: 2
-  bullet: {fileID: 5731848777064517748, guid: 5a01f5c00234a4b4cab49d78dd344965, type: 3}
+  bullet: {fileID: 5731848777064517748, guid: 8e74d510c5519134d932c1c9af2431d1, type: 3}
   isRange: 1
   attackPoint: {fileID: 8048229805220218440}
   pLayerMask:
