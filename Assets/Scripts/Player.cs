@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public int damage = 20;
     
     [SerializeField] private float Speed;
-    [SerializeField] private float MaxGold = 60f;
+    [SerializeField] public float MaxGold = 60f;
     
     #endregion
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Camera _camera;
     
-    private float _curGold;
+    public float _curGold;
     #endregion
 
     void Start()

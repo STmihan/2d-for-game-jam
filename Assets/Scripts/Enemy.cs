@@ -6,6 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     #region HP, damage and Speed fields
+    [Header("HP, damage and Speed fields")]
     public float damage = 2;
     [SerializeField] private int maxHP = 60;
     [SerializeField] private float speed = 2;
@@ -14,12 +15,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackDelay = 2;
     #endregion
     
+    [Space]
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask pLayerMask;
     
     [SerializeField] private bool isRange;
 
+    #region HitEffect
+    [Header("HitEffect")]
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private float duration;
+
+    [SerializeField]private SpriteRenderer _spriteRenderer;
+    [SerializeField]private Material _origMaterial;
+    
+    private Coroutine _flashCoroutine;
+    #endregion
     #region Private fields
     private Transform _target;
     private Player _targetComponent;
@@ -105,10 +117,32 @@ public class Enemy : MonoBehaviour
         Instantiate(bullet, attackPoint.position, attackPoint.rotation);
     }
     #endregion
+
+    #region HitEffect
+    private void HitEffect()
+    {
+        if (_flashCoroutine != null) StopCoroutine(_flashCoroutine);
+        _flashCoroutine = StartCoroutine(FlashRoutine());
+    }
+    
+    private IEnumerator FlashRoutine()
+    {
+        _spriteRenderer.material = flashMaterial;
+
+        yield return new WaitForSeconds(duration);
+
+        _spriteRenderer.material = _origMaterial;
+
+        _flashCoroutine = null;
+    }
+
+    #endregion
+    
     #region Public methods
     public void TakeDamage(int dm)
     {
         _curHP -= dm;
+        HitEffect();
         if (_curHP <= 0)
         {
             Destroy(gameObject);

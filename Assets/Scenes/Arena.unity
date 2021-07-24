@@ -179,7 +179,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 888abdaabba92ca4989efa386761a148, type: 2}
+  - {fileID: 2100000, guid: b32d21c3b2aacd04188a9884b50bee3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6463,11 +6463,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7570874588955144656, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7570874588955144656, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7570874588955144659, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_Sprite
@@ -6475,7 +6475,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 4f21f14ef2ef786409decb75d4de5370, type: 3}
     - target: {fileID: 7570874588955144659, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7570874588955144659, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_Color.g
@@ -6483,7 +6483,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7570874588955144659, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_Color.r
-      value: 0.078704715
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570874588955144659, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b32d21c3b2aacd04188a9884b50bee3d, type: 2}
+    - target: {fileID: 7570874589598218666, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7570874590360383301, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
+      propertyPath: attackRange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7570874590360383303, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_RootOrder
@@ -6529,6 +6541,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7570874590360383304, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7570874590360383306, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
       propertyPath: m_Name
       value: Enemy_small
@@ -6546,6 +6562,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4f21f14ef2ef786409decb75d4de5370, type: 3}
+    - target: {fileID: 4641997274585063180, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b32d21c3b2aacd04188a9884b50bee3d, type: 2}
     - target: {fileID: 4641997274585063181, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -6609,6 +6629,10 @@ PrefabInstance:
     - target: {fileID: 4641997274585063186, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641997274585063187, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
+      propertyPath: duration
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4641997274585063187, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
       propertyPath: flashMaterial
