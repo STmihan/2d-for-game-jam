@@ -7,15 +7,21 @@ using UnityEngine.SceneManagement;
 public class UI : MonoBehaviour
 {
     public static bool isPause=false;
-    public GameObject pausePanel;
+    public GameObject pausePanel,gamePanel;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
-        {            
-            pausePanel.SetActive(true);
-            Time.timeScale = 0f;
-            isPause = true;
+        {
+            if (isPause) Continue();
+            else
+            {
+                pausePanel.SetActive(true);
+                gamePanel.SetActive(false);
+                Time.timeScale = 0f;
+                isPause = true;
+            }
+           
         }
     }
     public void StartGame()
@@ -24,9 +30,10 @@ public class UI : MonoBehaviour
     }
     public void Continue()
     {
-        isPause = false;
         pausePanel.SetActive(false);
+        gamePanel.SetActive(true);
         Time.timeScale = 1f;
+        isPause = false;
     } 
     public void ExitGame()
     {       
@@ -36,6 +43,6 @@ public class UI : MonoBehaviour
     public void SoundVolume()
     {
         if (AudioListener.volume == 0) AudioListener.volume = 1;
-        else if (AudioListener.volume == 1) AudioListener.volume = 0;
+        else AudioListener.volume = 0;
     }
 }
