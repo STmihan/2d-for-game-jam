@@ -101,8 +101,10 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int dm)
     {
         _curHP -= dm;
-        if (_curHP<= 0 )
+        if (_curHP <= 0)
+        {
             Destroy(gameObject);
-        _targetComponent.HealOn();
+            _targetComponent.HealOn();
+        }
     }
 }
