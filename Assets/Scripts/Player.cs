@@ -36,8 +36,7 @@ public class Player : MonoBehaviour
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
         
-        // _rigidbody2D.AddForce(move * (Speed * Time.fixedDeltaTime));
-        _rigidbody2D.MovePosition(_rigidbody2D.position + move.normalized * (Speed * Time.fixedDeltaTime));
+        _rigidbody2D.AddForce(move * Speed);
     }
 
     void Rotate()
