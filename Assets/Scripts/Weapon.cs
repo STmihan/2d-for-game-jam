@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform mozzle;
-    [SerializeField] private float cooldownFire = 800;
+    [SerializeField] private float DelayAttackTime = 800;
 
     private bool isReady = true;
     private float nextFireTime = 0;
@@ -23,7 +23,7 @@ public class Weapon : MonoBehaviour
         if (Time.time > nextFireTime)
         {
             isReady = true;
-            nextFireTime = Time.time + 60/cooldownFire;
+            nextFireTime = Time.time + DelayAttackTime;
         }
     }
 

@@ -35,15 +35,14 @@ public class Player : MonoBehaviour
         Vector2 move;
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
-        
         _rigidbody2D.AddForce(move * Speed);
     }
 
     void Rotate()
     {
         Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
-
         Vector2 direction = mousePos - _rigidbody2D.position;
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
     }

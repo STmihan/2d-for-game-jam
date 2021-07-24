@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float speed = 2;
     
-    [SerializeField] private float damage = 2;
+    public float damage = 2;
     [SerializeField] private float attackRange = 2;
     [SerializeField] private float attackDelay = 2;
+
+    [SerializeField] private GameObject bullet;
     
     [SerializeField] private bool isRange;
     [SerializeField] private Transform attackPoint;
@@ -31,15 +33,6 @@ public class Enemy : MonoBehaviour
         FollowTarget();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        var col = other.collider;
-        if (other.collider.CompareTag($"Player"))
-        {
-            col.GetComponent<Player>().TakeDamage(damage);
-        }
-    }
-
     private void FollowTarget()
     {
         Rotate();
@@ -57,8 +50,14 @@ public class Enemy : MonoBehaviour
     {
         if (Time.time > nextAttackTime)
         {
-            if (isRange) MeeleAttack();
-            else MeeleAttack();
+            if (!isRange)
+            {
+                MeeleAttack();
+            }
+            else
+            {
+                RangeAttack();
+            }
             nextAttackTime = Time.time + attackDelay;
         }
     }
@@ -86,6 +85,6 @@ public class Enemy : MonoBehaviour
 
     private void RangeAttack()
     {
-        
+        Instantiate(bullet, attackPoint.position, Quaternion.identity);
     }
 }
