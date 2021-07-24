@@ -796,7 +796,7 @@ Canvas:
   m_GameObject: {fileID: 2085102250131839326}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -860,6 +860,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 2085102250097799622}
+  gamePanel: {fileID: 2085102248811773457}
 --- !u!1 &2085102250153702453
 GameObject:
   m_ObjectHideFlags: 0
