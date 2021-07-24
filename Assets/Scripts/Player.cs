@@ -5,10 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public int damage = 20;
+    
     [SerializeField] private float Speed;
+    [SerializeField] private float MaxGold = 60f;
+    
     private Rigidbody2D _rigidbody2D;
     private Camera _camera;
-    [SerializeField] private float MaxGold = 60f;
+    
     private float _curGold;
 
     void Start()
@@ -57,5 +61,10 @@ public class Player : MonoBehaviour
         _curGold -= damage;
         if (_curGold <= 0) 
             this.gameObject.SetActive(false);
+    }
+
+    public void HealOn()
+    {
+        _curGold += 100f;
     }
 }

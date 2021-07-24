@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public float damage = 2;
+
+    [SerializeField] private int maxHP = 60;
     [SerializeField] private float speed = 2;
     
-    public float damage = 2;
     [SerializeField] private float attackRange = 2;
     [SerializeField] private float attackDelay = 2;
 
@@ -18,14 +20,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask pLayerMask;
 
     private Transform _target;
+    private Player _targetComponent;
     private Rigidbody2D _rigidbody2D;
 
-    private float nextAttackTime;
+    private float _nextAttackTime;
+    private int _curHP;
 
     private void Start()
     {
         _target = GameObject.FindWithTag("Player").GetComponent<Transform>();
+        _targetComponent = _target.GetComponent<Player>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _curHP = maxHP;
     }
 
     private void FixedUpdate()
@@ -52,7 +58,7 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if (Time.time > nextAttackTime)
+        if (Time.time > _nextAttackTime)
         {
             if (!isRange)
             {
@@ -62,7 +68,7 @@ public class Enemy : MonoBehaviour
             {
                 RangeAttack();
             }
-            nextAttackTime = Time.time + attackDelay;
+            _nextAttackTime = Time.time + attackDelay;
         }
     }
 
@@ -84,11 +90,19 @@ public class Enemy : MonoBehaviour
         Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, attackRange, pLayerMask);
 
         if (hit.gameObject.GetComponent<Player>())
-            hit.gameObject.GetComponent<Player>().TakeDamage(damage);
+            _targetComponent.TakeDamage(damage);
     }
 
     private void RangeAttack()
     {
         Instantiate(bullet, attackPoint.position, attackPoint.rotation);
+    }
+
+    public void TakeDamage(int dm)
+    {
+        _curHP -= dm;
+        if (_curHP<= 0 )
+            Destroy(gameObject);
+        _targetComponent.HealOn();
     }
 }
