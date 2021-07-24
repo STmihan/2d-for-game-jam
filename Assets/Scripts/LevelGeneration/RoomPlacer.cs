@@ -7,25 +7,26 @@ using Random = UnityEngine.Random;
 
 public class RoomPlacer : MonoBehaviour
 {
-    [SerializeField] private Room[] roomsPrefabs;
+    [SerializeField] private Transform player;
+    [SerializeField] private Room[] rooms;
     [SerializeField] private Room startRoom;
-    [SerializeField] private Transform grid;
 
-    private Room[,] _spawnedRooms;
-    
+    private List<Room> spawnedRooms = new List<Room>();
+
     private void Start()
     {
-        _spawnedRooms = new Room[11, 11];
-        _spawnedRooms[5, 5] = startRoom;
-
-        for (int i = 0; i < 12; i++)
-        {
-            
-        }
+        spawnedRooms.Add(startRoom);
     }
 
-    private void PlaceRoom()
+    private void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space)) SpawnRoom();
+    }
+
+    private void SpawnRoom()
+    {
+        Room newRoom = Instantiate(rooms[Random.Range(0, rooms.Length)]);
+        newRoom.transform.position = spawnedRooms[spawnedRooms.Count-1].Forward.position - newRoom.Back.localPosition;
+        spawnedRooms.Add(newRoom);
     }
 }

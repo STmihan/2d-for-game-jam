@@ -10,6 +10,10 @@ public class Room : MonoBehaviour
 
     [SerializeField] private Sprite[] blocks;
     
+    [Space]
+    public Transform Forward;
+    public Transform Back;
+    
     private void Start()
     {
         foreach (var filter in bottom.GetComponentsInChildren<SpriteRenderer>())
