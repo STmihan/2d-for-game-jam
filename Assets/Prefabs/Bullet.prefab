@@ -13,8 +13,13 @@ GameObject:
   - component: {fileID: 3760398571032636455}
   - component: {fileID: 7386593302502063275}
   - component: {fileID: 5762885426707334223}
+<<<<<<< HEAD:Assets/Prefabs/Bullet_enemy.prefab
   m_Layer: 11
   m_Name: Bullet_enemy
+=======
+  m_Layer: 8
+  m_Name: Bullet
+>>>>>>> parent of 834917d (Revert "Revert "Доделал врагов""):Assets/Prefabs/Bullet.prefab
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -145,6 +150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
+<<<<<<< HEAD:Assets/Prefabs/Bullet_enemy.prefab
   isEnemyBullet: 1
   rangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
   player: {fileID: 4641997274585063186, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
+=======
+  RangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
+>>>>>>> parent of 834917d (Revert "Revert "Доделал врагов""):Assets/Prefabs/Bullet.prefab
