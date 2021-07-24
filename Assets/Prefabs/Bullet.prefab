@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
+  RangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}

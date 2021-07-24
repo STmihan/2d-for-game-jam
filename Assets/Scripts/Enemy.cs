@@ -33,16 +33,20 @@ public class Enemy : MonoBehaviour
         FollowTarget();
     }
 
+    private void Update()
+    {
+        if (Vector2.Distance(transform.position, _target.position) <= attackRange)
+        {
+            Attack();
+        }
+    }
+
     private void FollowTarget()
     {
         Rotate();
         if (Vector2.Distance(transform.position, _target.position) > attackRange)
         {
             Move();
-        }
-        else
-        {
-            Attack();
         }
     }
 
@@ -85,6 +89,6 @@ public class Enemy : MonoBehaviour
 
     private void RangeAttack()
     {
-        Instantiate(bullet, attackPoint.position, Quaternion.identity);
+        Instantiate(bullet, attackPoint.position, attackPoint.rotation);
     }
 }
