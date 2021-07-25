@@ -6,26 +6,60 @@ using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    
-    public GameObject pausePanel,gamePanel;
+    GameObject player;    
 
+    [Header("Panels is GameUI:")]
+    public GameObject pausePanel;
+    public GameObject gamePanel;
+
+    [Header("Heal bar:")]
+    public Image Heal; 
+    
+    public GameObject gameUI, gameOverUI;
+
+    public Text txtScore, txtTimeScore, txtHightScore, txtHightTimeScore;
+
+   
+
+    void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        
+    }    
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        InputPause();
+        ScoreHight();
+        HealBar();
+    }
+    void HealBar()
+    {
+        Heal.fillAmount = player.GetComponent<Player>()._curGold / player.GetComponent<Player>().MaxGold;
+    }
+    void ScoreHight()
+    {
+        if (player.GetComponent<Player>()._curGold <= 0)
         {
-            if (GameManager.Instance.isPause) Continue();
-            else
-            {
-                pausePanel.SetActive(true);
-                gamePanel.SetActive(false);
-                Time.timeScale = 0f;
-                GameManager.Instance.isPause = true;
-            }
+            gameOverUI.SetActive(true);
+            gameUI.SetActive(false);
+
+            txtTimeScore.text = "Time: " + GameManager.Instance.timeScore.ToString();
+            txtScore.text = "Score: " + GameManager.Instance.score.ToString();
+
+            txtHightScore.text = "Hight Score: " + GameManager.Instance.hightScore.ToString();
+            txtHightTimeScore.text = "Hight Time: " + GameManager.Instance.hightTimeScore.ToString();
+
+            Time.timeScale = 0f;
+            GameManager.Instance.isPause = true;
         }
     }
-    public void StartGame()
+    void InputPause()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        {
+            if (GameManager.Instance.isPause) Continue();
+            else Stop();            
+        }
     }
     public void Continue()
     {
@@ -33,12 +67,28 @@ public class UI : MonoBehaviour
         gamePanel.SetActive(true);
         Time.timeScale = 1f;
         GameManager.Instance.isPause = false;
-    } 
+    }
+    public void Stop()
+    {
+        if (GameManager.Instance.isPause) Continue();
+        else 
+        {
+            pausePanel.SetActive(true);
+            gamePanel.SetActive(false);
+            Time.timeScale = 0f;
+            GameManager.Instance.isPause = true;
+        }
+       
+    }
+    public void StartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    
     public void ExitGame()
     {       
         Application.Quit();
     }
-
     public void SoundVolume()
     {
         if (AudioListener.volume == 0) AudioListener.volume = 1;

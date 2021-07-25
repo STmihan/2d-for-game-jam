@@ -46,3 +46,9 @@ MonoBehaviour:
   isPause: 0
   score: 0
   timeScore: 0
+  txtScore: {fileID: 0}
+  txtTimeScore: {fileID: 0}
+  Heal: {fileID: 0}
+  player: {fileID: 0}
+  game: {fileID: 0}
+  over: {fileID: 0}

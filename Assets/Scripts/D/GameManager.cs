@@ -10,20 +10,21 @@ public class GameManager : MonoBehaviour
         get { return _instance; }
     }
     static GameManager _instance = null;
-    
+
+    GameObject player;
+
     public bool isPause = false;
 
-    [Header("Лучший результат:")]
-    public int score=0;
-    public int timeScore= 0;
-    [SerializeField] Text txtScore, txtTimeScore;
+    [Header("Текущий результат:")]
+    public int score = 0;
+    public int timeScore = 0;
+    [Header("Лучший результат:")]    
+    public int hightScore;
+    public int hightTimeScore;
 
-    [Header("Heal bar и Game over:")]
-    public Image Heal; //времянка
-    public GameObject player;
-    public GameObject game, over;
-    
-    
+
+
+
     void Awake()
     {
         if (_instance)
@@ -33,20 +34,22 @@ public class GameManager : MonoBehaviour
         }
         _instance = this;
         DontDestroyOnLoad(gameObject);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
-   
+  
     private void Update()
     {        
-        Heal.fillAmount =  player.GetComponent<Player>()._curGold/ player.GetComponent<Player>().MaxGold;
-        if(player.GetComponent<Player>()._curGold < 0)
+        if(PlayerPrefs.HasKey("HightScore") && PlayerPrefs.HasKey("HightTimeScore"))
         {
-            game.SetActive(false);
-            over.SetActive(true); 
-
-            txtScore.text = "Time: " + timeScore.ToString();
-            txtScore.text = "Score: " + score.ToString();
-
-            Time.timeScale = 0f;
+            hightScore = PlayerPrefs.GetInt("HightScore");
+            hightTimeScore = PlayerPrefs.GetInt("HightTimeScore");
+        }        
+        if (player.GetComponent<Player>()._curGold <= 0)
+        {
+            if (score > hightScore) PlayerPrefs.SetInt("HightScore", score);
+            if (timeScore > hightTimeScore) PlayerPrefs.SetInt("HightTimeScore", timeScore);
         }
+        if (Input.GetKeyDown(KeyCode.F1)) PlayerPrefs.DeleteAll();
     }
+
 }
