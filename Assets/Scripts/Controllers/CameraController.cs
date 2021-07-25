@@ -6,11 +6,11 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float smooth = 2f;
-    void Update()
+    void FixedUpdate()
     {
         Vector3 targetPos = target.position;
         targetPos.z = -10f;
         
-        transform.position = Vector3.Lerp(transform.position, targetPos, smooth * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPos, smooth * Time.fixedDeltaTime);
     }
 }
