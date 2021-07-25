@@ -33,6 +33,7 @@ public class Weapon : MonoBehaviour
         {
             Instantiate(bullet, mozzle.position, mozzle.rotation);
             isReady = false;
+            AudioManager.Instance.PlayClip("Shoot");
         }
     }
 }

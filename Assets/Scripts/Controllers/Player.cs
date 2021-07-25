@@ -62,9 +62,19 @@ public class Player : MonoBehaviour
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
         _rigidbody2D.AddForce(move * Speed);
+        AudioMove();
+    }
+    void AudioMove()
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        if ((Input.GetButton("Horizontal") || Input.GetButton("Vertical")) && !audioSource.isPlaying)
+        {
+            if(!audioSource.clip == AudioManager.Instance.audioClips["Step"]) audioSource.clip = AudioManager.Instance.audioClips["Step"];
+            audioSource.Play();
+        }           
     }
 
-    private void Rotate()
+private void Rotate()
     {
         Vector2 mousePos = _camera.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - _rigidbody2D.position;

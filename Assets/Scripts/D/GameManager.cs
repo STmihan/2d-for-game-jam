@@ -22,8 +22,9 @@ public class GameManager : MonoBehaviour
     public Image Heal; //времянка
     public GameObject player;
     public GameObject game, over;
-    
-    
+       
+  
+
     void Awake()
     {
         if (_instance)
@@ -34,7 +35,7 @@ public class GameManager : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(gameObject);
     }
-   
+  
     private void Update()
     {        
         Heal.fillAmount =  player.GetComponent<Player>()._curGold/ player.GetComponent<Player>().MaxGold;
