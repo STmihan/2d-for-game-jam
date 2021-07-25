@@ -37,13 +37,13 @@ public class GameManager : MonoBehaviour
    
     private void Update()
     {        
-        Heal.fillAmount =  player.GetComponent<Player>()._curGold/ player.GetComponent<Player>().MaxGold;
+        // Heal.fillAmount =  player.GetComponent<Player>()._curGold/ player.GetComponent<Player>().MaxGold;
         if(player.GetComponent<Player>()._curGold < 0)
         {
             game.SetActive(false);
                 over.SetActive(true); 
 
-            txtTimeScore.text = "Time: " + timeScore.ToString();
+            txtScore.text = "Time: " + timeScore.ToString();
             txtScore.text = "Score: " + score.ToString();            
 
             Time.timeScale = 0f;

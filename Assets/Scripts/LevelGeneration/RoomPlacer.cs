@@ -10,17 +10,20 @@ public class RoomPlacer : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Room[] rooms;
     [SerializeField] private Room startRoom;
+    public int curRoom;
 
-    private List<Room> spawnedRooms = new List<Room>();
+    public List<Room> spawnedRooms = new List<Room>();
 
     private void Start()
     {
         spawnedRooms.Add(startRoom);
+        curRoom = 0;
     }
 
     private void Update()
     {
-        if(player.position.y > spawnedRooms[spawnedRooms.Count-1].Forward.position.y - 15) SpawnRoom();
+        curRoom = spawnedRooms.Count - 1;
+        if (player.position.y < rooms[curRoom].Forward.position.y - 20) SpawnRoom();
     }
 
     private void SpawnRoom()
