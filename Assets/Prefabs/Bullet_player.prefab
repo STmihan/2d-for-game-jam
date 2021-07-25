@@ -147,4 +147,4 @@ MonoBehaviour:
   bulletSpeed: 20
   isEnemyBullet: 0
   rangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
-  player: {fileID: 303601244260535718, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
+  player: {fileID: 4641997274585063186, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
