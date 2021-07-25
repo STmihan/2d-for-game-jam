@@ -24,6 +24,11 @@ public class Room : MonoBehaviour
     [Space]
     public Transform Forward;
     public Transform Back;
+
+    [SerializeField] private SpawnEnemy[] spawnEnemies;
+    
+    public int enemyLeft;
+    public bool isComplite = false;
     
     private void Start()
     {
@@ -64,5 +69,22 @@ public class Room : MonoBehaviour
                 if (filter.sprite == stoneFill)
                     filter.sprite = null;
         }
+
+        foreach (var spawnEnemy in spawnEnemies)
+        {
+            enemyLeft += spawnEnemy.maxWave * spawnEnemy.enemyInWawe;
+        }
     }
+
+    // private void Update()
+    // {
+    //     if (enemyLeft == 0)
+    //     {
+    //         isComplite = true;
+    //         Forward.GetComponent<BoxCollider2D>().isTrigger = true;
+    //         // Forward.
+    //     }
+    // }
+    
+    
 }

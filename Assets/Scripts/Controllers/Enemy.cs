@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private LayerMask pLayerMask;
-    
     [SerializeField] private bool isRange;
 
     #region HitEffect
