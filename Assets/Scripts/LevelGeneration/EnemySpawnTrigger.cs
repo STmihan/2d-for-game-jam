@@ -5,17 +5,18 @@ using UnityEngine;
 
 public class EnemySpawnTrigger : MonoBehaviour
 {
-    public Room Room;
-    public SpawnEnemy[] SpawnEnemies;
-    private bool en = true;
-    private void OnTriggerEnter(Collider other)
+    public GameObject[] SpawnEnemies;
+    private bool once = true;
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!Room.isComplite)
+        if (once)
         {
+            Debug.Log("123");
             foreach (var VARIABLE in SpawnEnemies)
             {
-                StartCoroutine(VARIABLE.Spawn(VARIABLE.enemyInWawe));
+                VARIABLE.GetComponent<SpawnEnemy>().TriggerSpawn();
             }
+            once = false;
         }
     }
 }

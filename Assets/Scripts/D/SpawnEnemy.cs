@@ -19,7 +19,6 @@ public class SpawnEnemy : MonoBehaviour
     {
         spawnPoint = transform;
         box2D = GetComponent<BoxCollider2D>();
-        StartCoroutine(Spawn(enemyInWawe));
     }
     public IEnumerator Spawn(int enemyCount)
     {
@@ -33,10 +32,11 @@ public class SpawnEnemy : MonoBehaviour
         curentWave++;
         yield return new WaitForSeconds(4f);
         if (curentWave < maxWave) StartCoroutine(Spawn(enemyCount + 1));
-     
-
-
     }
-    
+
+    public void TriggerSpawn()
+    {
+        StartCoroutine(Spawn(enemyInWawe));
+    }
 
 }

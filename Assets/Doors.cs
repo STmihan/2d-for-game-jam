@@ -10,21 +10,16 @@ public class Doors : MonoBehaviour
     public GameObject[] enemies;
     private bool trigger;
 
-    private void Start()
-    {
-        trigger = Forward.GetComponent<BoxCollider2D>().enabled;
-    }
-
     void Update()
     {
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length == 0)
         {
-            trigger = true;
+            Forward.SetActive(false);
         }
         else
         {
-            trigger = false;
+            Forward.SetActive(true);
         }
     }
 }

@@ -37,7 +37,6 @@ public class Enemy : MonoBehaviour
     private Transform _target;
     private Player _targetComponent;
     private Rigidbody2D _rigidbody2D;
-    private RoomPlacer _roomPlacer;
 
     private float _nextAttackTime;
     private int _curHP;
@@ -52,7 +51,6 @@ public class Enemy : MonoBehaviour
         _targetComponent = _target.GetComponent<Player>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _curHP = maxHP;
-        _roomPlacer = GameObject.FindWithTag("RoomPlacer").GetComponent<RoomPlacer>();
     }
 
     #region Updates Methods

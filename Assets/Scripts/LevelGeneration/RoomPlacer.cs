@@ -23,7 +23,7 @@ public class RoomPlacer : MonoBehaviour
     private void Update()
     {
         curRoom = spawnedRooms.Count - 1;
-        if (player.position.y < rooms[curRoom].Forward.position.y - 20) SpawnRoom();
+        if (player.position.y > spawnedRooms[spawnedRooms.Count - 1].Forward.position.y - 10) SpawnRoom();
     }
 
     private void SpawnRoom()

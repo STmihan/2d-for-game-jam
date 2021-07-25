@@ -21,7 +21,6 @@ public class UI : MonoBehaviour
                 Time.timeScale = 0f;
                 GameManager.Instance.isPause = true;
             }
-           
         }
     }
     public void StartGame()
