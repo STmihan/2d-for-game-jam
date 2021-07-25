@@ -198,7 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   maxHP: 60
-  speed: 2
+  speed: 5
   attackRange: 1.5
   attackDelay: 2
   bullet: {fileID: 5731848777064517748, guid: 5a01f5c00234a4b4cab49d78dd344965, type: 3}
