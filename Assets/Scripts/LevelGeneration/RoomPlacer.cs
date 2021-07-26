@@ -10,21 +10,20 @@ public class RoomPlacer : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Room[] rooms;
     [SerializeField] private Room startRoom;
-    public int curRoom;
-
     public List<Room> spawnedRooms = new List<Room>();
+
+    private EnemyDetector _enemyDetector;
 
     private void Start()
     {
         spawnedRooms.Add(startRoom);
-        curRoom = 0;
+        _enemyDetector = GameObject.FindWithTag("EnemyDetector").GetComponent<EnemyDetector>();
     }
 
     private void Update()
     {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        curRoom = spawnedRooms.Count - 1;
-        if (player.position.y > spawnedRooms[spawnedRooms.Count - 1].Forward.position.y - 5) 
+        var enemies = _enemyDetector.Enemies;
+        if (player.position.y > spawnedRooms[spawnedRooms.Count - 1].Forward.position.y - 15) 
             if (enemies.Length == 0)
                 SpawnRoom();
     }

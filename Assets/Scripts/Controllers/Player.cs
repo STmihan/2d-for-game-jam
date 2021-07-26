@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
 
     private void GoldTimer()
     {
-        _curGold -= Time.deltaTime * Time.time;
+        _curGold -= Time.deltaTime;
     }
     #endregion
 

@@ -25579,7 +25579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Forward: {fileID: 8003408249955182205}
-  Arrow: {fileID: 0}
+  Enemies: []
 --- !u!1 &8113300655195217785
 GameObject:
   m_ObjectHideFlags: 0
@@ -25674,7 +25674,7 @@ GameObject:
   - component: {fileID: 3054408101077216877}
   m_Layer: 0
   m_Name: Room 2
-  m_TagString: Untagged
+  m_TagString: EnemyDetector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44676,13 +44676,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8791225484104921927}
-  m_LocalRotation: {x: -0, y: -0, z: 0.24425338, w: 0.9697114}
-  m_LocalPosition: {x: -12.85, y: -12.29, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.40467864, w: 0.914459}
+  m_LocalPosition: {x: -16.18744, y: 5.923401, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2102150365770667853}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 28.275}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -47.742}
 --- !u!61 &5768009619569553981
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44722,10 +44722,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeEnemy:
+  - {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   - {fileID: 6557217303412872093, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
-  enemyInWawe: 1
+  enemyInWawe: 3
   curentWave: 0
-  maxWave: 1
+  maxWave: 2
   spawnedEnemies: 0
 --- !u!1 &8881606886427327980
 GameObject:
@@ -44834,13 +44835,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9029431121757198979}
-  m_LocalRotation: {x: -0, y: -0, z: -0.47807586, w: 0.8783185}
-  m_LocalPosition: {x: -8.906143, y: 16.844204, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.88125485, w: 0.47264147}
+  m_LocalPosition: {x: 2.3, y: 15.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2102150365770667853}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -57.12}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -123.588}
 --- !u!61 &6388586165758496276
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -44880,8 +44881,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeEnemy:
+  - {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   - {fileID: 6557217303412872093, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
-  enemyInWawe: 1
+  enemyInWawe: 3
   curentWave: 0
-  maxWave: 1
+  maxWave: 2
   spawnedEnemies: 0

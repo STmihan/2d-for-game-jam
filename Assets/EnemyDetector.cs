@@ -9,6 +9,8 @@ public class EnemyDetector : MonoBehaviour
     private GameObject _arrow;
     private AudioSource _ao;
     private Player _player;
+
+    public GameObject[] Enemies;
     private void Start()
     {
         _ao = GameObject.FindWithTag("AudioMain").GetComponent<AudioSource>();
@@ -18,9 +20,9 @@ public class EnemyDetector : MonoBehaviour
 
     void Update()
     {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (enemies.Length == 0)
+        Enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        if (Enemies.Length == 0)
         {
             Forward.SetActive(false);
             _arrow.SetActive(true);

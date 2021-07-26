@@ -29781,10 +29781,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeEnemy:
+  - {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   - {fileID: 6557217303412872093, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
-  enemyInWawe: 1
+  enemyInWawe: 3
   curentWave: 0
-  maxWave: 1
+  maxWave: 2
   spawnedEnemies: 0
 --- !u!1 &6462637197417665950
 GameObject:
@@ -29939,10 +29940,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeEnemy:
+  - {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   - {fileID: 6557217303412872093, guid: 1e5561b6415b708488590db2c49decf9, type: 3}
-  enemyInWawe: 1
+  enemyInWawe: 3
   curentWave: 0
-  maxWave: 1
+  maxWave: 2
   spawnedEnemies: 0
 --- !u!1 &6869066139309421259
 GameObject:
@@ -30379,7 +30381,7 @@ GameObject:
   - component: {fileID: 4390596598131740590}
   m_Layer: 0
   m_Name: Doors
-  m_TagString: Untagged
+  m_TagString: EnemyDetector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30411,7 +30413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Forward: {fileID: 8003408249955182205}
-  Arrow: {fileID: 0}
+  Enemies: []
 --- !u!1 &8113300655195217785
 GameObject:
   m_ObjectHideFlags: 0

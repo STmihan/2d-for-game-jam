@@ -30,7 +30,7 @@ public class SpawnEnemy : MonoBehaviour
                 spawnedEnemies++;
             }
         curentWave++;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         if (curentWave < maxWave) StartCoroutine(Spawn(enemyCount + 1));
     }
 

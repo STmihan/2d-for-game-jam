@@ -102,7 +102,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,6 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 20
   isEnemyBullet: 0
-  rangeEnemy: {fileID: 8327336038552842184, guid: e23eccb8b82202e4b98a3dd6799b39e1, type: 3}
+  rangeEnemy: {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   player: {fileID: 303601244260535718, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
   commonHitEffect: {fileID: 4101186112634541278, guid: b2fea05974b57ee4c9ee7536430795ed, type: 3}
