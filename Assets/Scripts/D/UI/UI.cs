@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
-    GameObject player;    
-
+    GameObject player;
+    public AudioSource Mixer;
+    
     [Header("Panels is GameUI:")]
     public GameObject pausePanel;
     public GameObject gamePanel;
@@ -19,7 +21,10 @@ public class UI : MonoBehaviour
 
     public Text txtScore, txtTimeScore, txtHightScore, txtHightTimeScore;
 
-   
+    [Header("Pause")]
+    public Button Home;
+    public Button Mute;
+    public Button Resume;
 
     void Awake()
     {
@@ -58,7 +63,7 @@ public class UI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (GameManager.Instance.isPause) Continue();
-            else Stop();            
+            else Stop();
         }
     }
     public void Continue()
@@ -86,12 +91,16 @@ public class UI : MonoBehaviour
     }
     
     public void ExitGame()
-    {       
-        Application.Quit();
+    {
+        SceneManager.LoadScene(0);
+        pausePanel.SetActive(false);
+        gamePanel.SetActive(true);
+        Time.timeScale = 1f;
+        GameManager.Instance.isPause = false;
     }
     public void SoundVolume()
     {
-        if (AudioListener.volume == 0) AudioListener.volume = 1;
-        else AudioListener.volume = 0;
+        if (Mixer.mute) Mixer.mute = false;
+        else Mixer.mute = true;
     }
 }

@@ -8,9 +8,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 50f;
     [SerializeField] private bool isEnemyBullet;
+    [SerializeField] private bool isBigHit;
+    [SerializeField] private LayerMask _layer;
     
     [SerializeField] private GameObject rangeEnemy;
     [SerializeField] private GameObject player;
+    [SerializeField] private float radius;
 
     [Header("Hit Effects")] [SerializeField]
     private GameObject commonHitEffect;
@@ -18,6 +21,7 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Enemy _enemy;
     private Player _player;
+    
     
     void Start()
     {
@@ -48,7 +52,12 @@ public class Bullet : MonoBehaviour
         {
             if (col.CompareTag($"Enemy") && gm.GetComponent<Enemy>())
             {
-                gm.GetComponent<Enemy>().TakeDamage(_player.damage);
+                Collider2D[] hit = Physics2D.OverlapCircleAll(other.contacts[0].point, radius,_layer);
+                
+                foreach (var VARIABLE in hit)
+                {
+                     VARIABLE.GetComponent<Enemy>().TakeDamage(_player.damage);
+                }
             }
             if (!col.CompareTag($"Bullet"))
             {
@@ -63,6 +72,6 @@ public class Bullet : MonoBehaviour
         List<ContactPoint2D> contact = new List<ContactPoint2D>();
         other.GetContacts(contact);
         var comhiteff = Instantiate(commonHitEffect, contact[0].point, quaternion.identity);
-        Destroy(comhiteff, 1f);
+        Destroy(comhiteff, .6f);
     }
 }

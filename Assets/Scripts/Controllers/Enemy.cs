@@ -35,9 +35,11 @@ public class Enemy : MonoBehaviour
     private Transform _target;
     private Player _targetComponent;
     private Rigidbody2D _rigidbody2D;
+    public GameObject Manager;
 
     private float _nextAttackTime;
     private int _curHP;
+    private GameManager _manager;
     #endregion
 
     public bool isInBattle;
@@ -149,6 +151,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
             _targetComponent.HealOn();
+            GameObject.FindWithTag("Manager").GetComponent<GameManager>().score++;
         }
     }
     #endregion

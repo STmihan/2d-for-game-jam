@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3760398571032636455}
   - component: {fileID: 7386593302502063275}
   - component: {fileID: 5762885426707334223}
-  m_Layer: 11
-  m_Name: Bullet_enemy
+  m_Layer: 8
+  m_Name: Bullet_player_common
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.018274888, y: 0.41379666}
+  m_Offset: {x: 0.01566422, y: 0.41379672}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,7 +109,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16345021, y: 0.1765039}
+  m_Size: {x: 0.16345024, y: 0.16083968}
   m_EdgeRadius: 0
 --- !u!50 &7386593302502063275
 Rigidbody2D:
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  isEnemyBullet: 1
+  isEnemyBullet: 0
   isBigHit: 0
   _layer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 4096
   rangeEnemy: {fileID: 7673444475383457063, guid: 9c143090b64209644ae7e46d5f80f9bf, type: 3}
   player: {fileID: 303601244260535718, guid: a1cb79942e347cb4fba0ff57b6bfa67a, type: 3}
   radius: 1

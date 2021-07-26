@@ -26,12 +26,12 @@ public class EnemyDetector : MonoBehaviour
         {
             Forward.SetActive(false);
             _arrow.SetActive(true);
-            BackgroundMusicChange(0.2f);
+            BackgroundMusicChange(0.3f);
             _player._isInBattle = false;
         }
         else
         {
-            BackgroundMusicChange(.7f);
+            BackgroundMusicChange(0.3f);
             Forward.SetActive(true);
             _arrow.SetActive(false);
             _player._isInBattle = true;

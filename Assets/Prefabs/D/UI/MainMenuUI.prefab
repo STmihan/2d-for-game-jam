@@ -599,11 +599,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2706810533811196798}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 976fcea6f8d1b9747a063faba145958d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
+  gamePanel: {fileID: 0}
+  Heal: {fileID: 0}
+  gameUI: {fileID: 0}
+  gameOverUI: {fileID: 0}
+  txtScore: {fileID: 0}
+  txtTimeScore: {fileID: 0}
+  txtHightScore: {fileID: 0}
+  txtHightTimeScore: {fileID: 0}
 --- !u!1 &2706810533823813165
 GameObject:
   m_ObjectHideFlags: 0

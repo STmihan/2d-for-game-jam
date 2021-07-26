@@ -10,6 +10,8 @@ TagManager:
   - RoomPlacer
   - Arrow
   - AudioMain
+  - EnemyDetector
+  - Magager
   layers:
   - Default
   - TransparentFX

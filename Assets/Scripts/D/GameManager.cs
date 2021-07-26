@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Текущий результат:")]
     public int score = 0;
-    public int timeScore = 0;
+    public float timeScore = 0;
     [Header("Лучший результат:")]    
     public int hightScore;
-    public int hightTimeScore;
+    public float hightTimeScore;
 
 
 
@@ -38,7 +38,8 @@ public class GameManager : MonoBehaviour
     }
   
     private void Update()
-    {        
+    {
+        timeScore += Mathf.CeilToInt(Time.deltaTime);
         if(PlayerPrefs.HasKey("HightScore") && PlayerPrefs.HasKey("HightTimeScore"))
         {
             hightScore = PlayerPrefs.GetInt("HightScore");
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<Player>()._curGold <= 0)
         {
             if (score > hightScore) PlayerPrefs.SetInt("HightScore", score);
-            if (timeScore > hightTimeScore) PlayerPrefs.SetInt("HightTimeScore", timeScore);
+            if (timeScore > hightTimeScore) PlayerPrefs.SetInt("HightTimeScore", (int)timeScore);
         }
         if (Input.GetKeyDown(KeyCode.F1)) PlayerPrefs.DeleteAll();
     }
