@@ -11,7 +11,6 @@ public class EnemySpawnTrigger : MonoBehaviour
     {
         if (once)
         {
-            Debug.Log("123");
             foreach (var VARIABLE in SpawnEnemies)
             {
                 VARIABLE.GetComponent<SpawnEnemy>().TriggerSpawn();

@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Enemy
   - RoomPlacer
+  - Arrow
+  - AudioMain
   layers:
   - Default
   - TransparentFX

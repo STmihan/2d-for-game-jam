@@ -25,10 +25,8 @@ public class Enemy : MonoBehaviour
     [Header("HitEffect")]
     [SerializeField] private Material flashMaterial;
     [SerializeField] private float duration;
-
-    // [SerializeField]
+    
     private SpriteRenderer _spriteRenderer;
-    // [SerializeField]
     private Material _origMaterial;
     
     private Coroutine _flashCoroutine;
@@ -42,6 +40,7 @@ public class Enemy : MonoBehaviour
     private int _curHP;
     #endregion
 
+    public bool isInBattle;
     
     private void Start()
     {

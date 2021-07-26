@@ -5,8 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private RoomPlacer RoomPlacer; 
-
-    // Update is called once per frame
+    
     void Update()
     {
         var target = RoomPlacer.spawnedRooms[RoomPlacer.spawnedRooms.Count - 1].Forward.position;

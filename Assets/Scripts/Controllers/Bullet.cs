@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -10,6 +11,9 @@ public class Bullet : MonoBehaviour
     
     [SerializeField] private GameObject rangeEnemy;
     [SerializeField] private GameObject player;
+
+    [Header("Hit Effects")] [SerializeField]
+    private GameObject commonHitEffect;
     
     private Rigidbody2D _rigidbody2D;
     private Enemy _enemy;
@@ -35,6 +39,10 @@ public class Bullet : MonoBehaviour
             {
                 gm.GetComponent<Player>().TakeDamage(_enemy.damage);
             }
+            if (!col.CompareTag($"Bullet"))
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
@@ -42,10 +50,19 @@ public class Bullet : MonoBehaviour
             {
                 gm.GetComponent<Enemy>().TakeDamage(_player.damage);
             }
+            if (!col.CompareTag($"Bullet"))
+            {
+                Destroy(gameObject);
+            }
+            HitEffect(other);
         }
-        if (!col.CompareTag($"Bullet"))
-        {
-            Destroy(gameObject);
-        }
+    }
+
+    private void HitEffect(Collision2D other)
+    {
+        List<ContactPoint2D> contact = new List<ContactPoint2D>();
+        other.GetContacts(contact);
+        var comhiteff = Instantiate(commonHitEffect, contact[0].point, quaternion.identity);
+        Destroy(comhiteff, 1f);
     }
 }

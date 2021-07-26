@@ -22,8 +22,11 @@ public class RoomPlacer : MonoBehaviour
 
     private void Update()
     {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
         curRoom = spawnedRooms.Count - 1;
-        if (player.position.y > spawnedRooms[spawnedRooms.Count - 1].Forward.position.y - 10) SpawnRoom();
+        if (player.position.y > spawnedRooms[spawnedRooms.Count - 1].Forward.position.y - 5) 
+            if (enemies.Length == 0)
+                SpawnRoom();
     }
 
     private void SpawnRoom()
