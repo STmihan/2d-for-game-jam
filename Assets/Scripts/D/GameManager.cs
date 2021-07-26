@@ -27,19 +27,20 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (_instance)
-        {
-            DestroyImmediate(gameObject);
-            return;
-        }
+        // if (_instance)
+        // {
+        //     // DestroyImmediate(gameObject);
+        //     return;
+        // }
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         player = GameObject.FindGameObjectWithTag("Player");
+        Time.timeScale = 1f;
     }
   
     private void Update()
     {
-        timeScore += Mathf.CeilToInt(Time.deltaTime);
+        timeScore += Time.deltaTime;
         if(PlayerPrefs.HasKey("HightScore") && PlayerPrefs.HasKey("HightTimeScore"))
         {
             hightScore = PlayerPrefs.GetInt("HightScore");
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<Player>()._curGold <= 0)
         {
             if (score > hightScore) PlayerPrefs.SetInt("HightScore", score);
-            if (timeScore > hightTimeScore) PlayerPrefs.SetInt("HightTimeScore", (int)timeScore);
+            if (timeScore > hightTimeScore) PlayerPrefs.SetInt("HightTimeScore", Mathf.CeilToInt(timeScore));
         }
         if (Input.GetKeyDown(KeyCode.F1)) PlayerPrefs.DeleteAll();
     }

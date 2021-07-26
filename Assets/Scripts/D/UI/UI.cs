@@ -48,11 +48,11 @@ public class UI : MonoBehaviour
             gameOverUI.SetActive(true);
             gameUI.SetActive(false);
 
-            txtTimeScore.text = "Time: " + GameManager.Instance.timeScore.ToString();
-            txtScore.text = "Score: " + GameManager.Instance.score.ToString();
+            txtTimeScore.text = Mathf.CeilToInt(GameManager.Instance.timeScore).ToString();
+            txtScore.text = GameManager.Instance.score.ToString();
 
-            txtHightScore.text = "Hight Score: " + GameManager.Instance.hightScore.ToString();
-            txtHightTimeScore.text = "Hight Time: " + GameManager.Instance.hightTimeScore.ToString();
+            txtHightScore.text = GameManager.Instance.hightScore.ToString();
+            txtHightTimeScore.text = GameManager.Instance.hightTimeScore.ToString();
 
             Time.timeScale = 0f;
             GameManager.Instance.isPause = true;
@@ -60,7 +60,8 @@ public class UI : MonoBehaviour
     }
     void InputPause()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0)
+        // && SceneManager.GetActiveScene().buildIndex != 0
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameManager.Instance.isPause) Continue();
             else Stop();

@@ -11,7 +11,7 @@ TagManager:
   - Arrow
   - AudioMain
   - EnemyDetector
-  - Magager
+  - Manager
   layers:
   - Default
   - TransparentFX
