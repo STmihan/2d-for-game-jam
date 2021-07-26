@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     #region Private fields
     private Rigidbody2D _rigidbody2D;
     private Camera _camera;
+    private Animator _animator;
     #endregion
 
     public float _curGold;
@@ -55,6 +56,8 @@ public class Player : MonoBehaviour
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _origMaterial = _spriteRenderer.material;
+
+        _animator = GetComponent<Animator>();
     }
     
     void FixedUpdate()
@@ -77,6 +80,7 @@ public class Player : MonoBehaviour
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
         _rigidbody2D.AddForce(move * Speed);
+        AnimationRUn();
     }
 
     private void Rotate()
@@ -154,6 +158,21 @@ public class Player : MonoBehaviour
         else
         {
             AudioMove(.7f);
+        }
+    }
+    #endregion
+
+    #region Animation
+
+    private void AnimationRUn()
+    {
+        if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
+        {
+            _animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            _animator.SetBool("isRunning", false);
         }
     }
     #endregion
