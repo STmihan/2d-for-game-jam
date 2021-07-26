@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField]public int damage = 20;
     [SerializeField] private float Speed;
     [SerializeField] public float MaxGold = 60f;
-    
+    [SerializeField] private float HealOnKill = 10f;
     #endregion
 
     #region HitEffect
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
 
     public void HealOn()
     {
-        _curGold += 10f;
+        _curGold += HealOnKill;
         if (_curGold > MaxGold)
             _curGold = MaxGold;
     }
